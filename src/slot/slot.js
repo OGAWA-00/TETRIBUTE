@@ -4,4 +4,5 @@ const SLOT_TABLE = {
     3: "Bomb",
     4: "X",
     5: "Fuck",
+    
 };
