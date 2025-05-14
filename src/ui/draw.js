@@ -39,6 +39,9 @@ export const MINO_ID_MAP = {
     S: 5,
     T: 6,
     Z: 7,
+    X: 8,
+    LI: 8,
+    F: 8,
   };
 
 const COLOR_MAP = {
@@ -49,6 +52,7 @@ const COLOR_MAP = {
     5: '#00f000', // S
     6: '#a000f0', // T
     7: '#f00000', // Z
+    8: '#00f0f0', //EXTRA
 };
 
 const MINO_FILES = {
@@ -59,6 +63,7 @@ const MINO_FILES = {
     5: "./../../public/assets/images/minos/Smino.jpg", // S
     6: "./../../public/assets/images/minos/Tmino.jpg", // T
     7: "./../../public/assets/images/minos/Zmino.jpg", // Z
+    8: "./../../public/assets/images/minos/Xmino.jpg", //EXTRA
 };
 
 const MINO_MINO_FILES = {
@@ -69,6 +74,7 @@ const MINO_MINO_FILES = {
     5: "./../../public/assets/images/MINIminos/SMINImino.jpg", // S
     6: "./../../public/assets/images/MINIminos/TMINImino.jpg", // T
     7: "./../../public/assets/images/MINIminos/ZMINImino.jpg", // Z
+    8: "./../../public/assets/images/MINIminos/XMINImino.jpg", //EXTRA
 };
 
 const SLOT_FILES = {
@@ -137,8 +143,6 @@ export function drawField() {
             if (value !== 0) {
                 const image = minoImages[value];
                 ctx.drawImage(image, x * BLOCK_SIZE, y * BLOCK_SIZE);
-                // ctx.fillStyle = COLOR_MAP[value] || '#888'; // 未定義ID用に灰色
-                // ctx.fillRect(x * BLOCK_SIZE, y * BLOCK_SIZE, BLOCK_SIZE, BLOCK_SIZE);
             }
         }
     }
@@ -261,7 +265,7 @@ export function drawScore() {
     onBackground(canvas,SCORE_POS.x,SCORE_POS.y);
 }
 
-export function drawSlot() {
+export function drawSlot(){
     const canvas = getSlotContext();
     const ctx = canvas.getContext('2d');
 
@@ -272,20 +276,43 @@ export function drawSlot() {
     ctx.fillStyle = "gray";
     ctx.fillRect(15, 75, 270, 180);
 
-    ctx.fillStyle = "#f00000";
+    onBackground(canvas,SLOT_POS.x,SLOT_POS.y);
+}
+
+export function drawStartSlot() {
+    const canvas = getSlotContext();
+    const ctx = canvas.getContext('2d');
+
+    const id = [1,2,3,4,5,6,7];
+
+    for (let i = id.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [id[i], id[j]] = [id[j], id[i]];
+    }
+
+    ctx.fillStyle = COLOR_MAP[id[0]];
     ctx.fillRect( 15, 120, 90, 90);
-    ctx.fillStyle = "#00f000";
+    ctx.fillStyle = COLOR_MAP[id[1]];
     ctx.fillRect(105, 120, 90, 90);
-    ctx.fillStyle = "#0000f0";
+    ctx.fillStyle = COLOR_MAP[id[2]];
     ctx.fillRect(195, 120, 90, 90);
 
     // 各リールの絵柄を描画
-    const image = slotImages[1];
-    ctx.drawImage(image,  15,120);
-    ctx.drawImage(image, 105,120);
-    ctx.drawImage(image, 195,120);
+    // const image = slotImages[1];
+    // ctx.drawImage(image,  15,120);
+    // ctx.drawImage(image, 105,120);
+    // ctx.drawImage(image, 195,120);
 
-    
+    onBackground(canvas,SLOT_POS.x,SLOT_POS.y);
+}
+
+export function drawStopSlot() {
+    const canvas = getSlotContext();
+    const ctx = canvas.getContext('2d');
+
+    //リールエリア仮置き
+    ctx.fillStyle = "gray";
+    ctx.fillRect(15, 75, 270, 180);
 
     onBackground(canvas,SLOT_POS.x,SLOT_POS.y);
 }

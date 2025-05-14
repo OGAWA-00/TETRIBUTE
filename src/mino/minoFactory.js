@@ -2,7 +2,9 @@ import { isValidPosition } from '../field/collision.js';
 
 import { gameState } from '../game/state.js';
 
-export const MINO_TYPES = ['I', 'O', 'T', 'S', 'Z', 'J', 'L'];
+export const MINO_TYPES = [
+    'I', 'O', 'T', 'S', 'Z', 'J', 'L',
+];
 export const EXTLA_MINO_TYPES = ['X', 'LI', 'F'];
 
 const MINO_SHAPES = {
@@ -33,23 +35,20 @@ const MINO_SHAPES = {
     ],
 };
 
-const EXTLA_MINO_SHAPES = {
-    X: [[8, 0, 8],
+const EXTRA_MINO_SHAPES = {
+    X: [
+        [8, 0, 8],
         [0, 8, 0],
         [8, 0, 8]
     ],
     LI: [[8, 8, 8, 8, 8, 8]],
-    F: [[0, 8, 0, 0],
+    F: [
+        [0, 8, 0, 0],
         [0, 8, 0, 0],
         [8, 8, 8, 8],
         [8, 8, 8, 8]
     ],
-    H: [[0, 0, 8, 0, 0],
-        [8, 8, 8, 8, 8],
-        [0, 8, 8, 8, 0],
-        [0, 8, 0, 8, 0],
-    ],
-}
+};
 
 export function generate7Bag() {
     const bag = [...MINO_TYPES];
@@ -61,7 +60,15 @@ export function generate7Bag() {
 }
 
 export function getMinoShape(type) {
-    return MINO_SHAPES[type];
+    if (type in MINO_SHAPES){
+        return MINO_SHAPES[type];
+    } else {
+        return EXTRA_MINO_SHAPES[type];
+    }
+}
+
+export function getExtraMinoShape(type) {
+    return EXTRA_MINO_SHAPES[type];
 }
 
 export function spawnMino() {
@@ -69,7 +76,7 @@ export function spawnMino() {
       const bag = generate7Bag();
       gameState.nextQueue.push(...bag);
     }
-  
+
     const type = gameState.nextQueue.shift();
     const shape = getMinoShape(type);
     let spawnX = 3;

@@ -8,7 +8,9 @@ import { moveLeft, moveRight, moveDown, hardDrop } from '../mino/minoMove.js';
 import { updateGhost } from '../mino/minoGhost.js';
 import { holdMino } from '../mino/minoHold.js';
 
-import { drawField, drawMino, drawGhost, drawNextQueue, drawHold, drawScore } from '../ui/draw.js';
+import { slotStart, slotStop } from '../slot/slot.js';
+
+import { drawField, drawMino, drawGhost, drawNextQueue, drawHold, drawScore, drawStartSlot, drawStopSlot } from '../ui/draw.js';
 
 export function setupController() {
     on('move', ({ direction }) => {
@@ -87,5 +89,15 @@ on('tick', () => {
     drawGhost();
     drawMino();
     drawNextQueue();
+    if (gameState.slotSpin) {drawStartSlot();}
+});
+
+on('startSlot', () => {
+    slotStart();
+});
+
+on('stopSlot', () => {
+    slotStop();
+    drawStopSlot();
 });
   

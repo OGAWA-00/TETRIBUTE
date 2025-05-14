@@ -8,6 +8,7 @@ import { putMinoOnField, clearLines } from '../field/field.js';
 
 import { addScore } from '../score/score.js';
 
+
 export function moveLeft() {
     const mino = { ...gameState.activeMino, x: gameState.activeMino.x - 1 };
     if (isValidPosition(mino, gameState.field)) {

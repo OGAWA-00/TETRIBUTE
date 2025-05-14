@@ -11,6 +11,8 @@ export const gameState = {
     status: 'init', // 'init' | 'playing' | 'paused' | 'gameover'
     holdMino: null,
     canHold: true,
+    slotCount: 0,
+    slotSpin: false
 };
   
 export function createEmptyField(rows = 22, cols = 10) {
@@ -30,6 +32,8 @@ export function resetGameState() {
     gameState.status = 'paused'; // リセット後は停止状態
     holdMino: null,
     gameState.canHold = true;
+    gameState.slotCount = 0;
+    slotSpin: false;
 }
   
   

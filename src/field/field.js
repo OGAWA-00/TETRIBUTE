@@ -33,6 +33,7 @@ export function clearLines() {
     gameState.field = newField;
     gameState.linesCleared += linesCleared;
     gameState.level = getLevel(gameState.linesCleared);
+    gameState.slotCount += linesCleared;
 
     const isTSpin = checkTSpin();
     addScore({ linesCleared, isTSpin });
