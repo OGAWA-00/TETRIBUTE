@@ -71,18 +71,31 @@ const MINO_MINO_FILES = {
     7: "./../../public/assets/images/MINIminos/ZMINImino.jpg", // Z
 };
 
+const SLOT_FILES = {
+    1: "./../../public/assets/images/slot/slot_F.jpg",
+    2: "./../../public/assets/images/slot/slot_LI.jpg",
+    3: "./../../public/assets/images/slot/slot_X.jpg",
+}
+
 const minoImages = {};
 const miniMinoImages = {};
+const slotImages = {};
 
-function preloadImages(dict, imageFiles) {
+export function preloadImages(dict, imageFiles) {
     for (const key in imageFiles) {
         dict[key] = new Image();
         dict[key].src = imageFiles[key];
     }
 }
 
-preloadImages(minoImages,MINO_FILES);
-preloadImages(miniMinoImages,MINO_MINO_FILES);
+preloadImages(minoImages, MINO_FILES);
+preloadImages(miniMinoImages, MINO_MINO_FILES);
+preloadImages(slotImages, SLOT_FILES);
+
+export function onBackground(canvas,x,y) {
+    const bg = getBackgroundContext();
+    bg.drawImage(canvas,x,y);
+}
 
 export function drawBackground() {
     const ctx = getBackgroundContext();
@@ -147,7 +160,6 @@ export function drawMino() {
             if (cell) {
                 const image = minoImages[id];
                 ctx.drawImage(image, (x + dx) * BLOCK_SIZE, (y + dy) * BLOCK_SIZE,);
-                //ctx.fillRect((x + dx) * BLOCK_SIZE, (y + dy) * BLOCK_SIZE, BLOCK_SIZE, BLOCK_SIZE);
             }
         });
     });
@@ -256,10 +268,24 @@ export function drawSlot() {
     ctx.fillStyle = BG_COLOR;
     ctx.fillRect(0, 0, SLOT_WINDOW_WIDTH, SLOT_WINDOW_HEIGHT);
 
-    onBackground(canvas,SLOT_POS.x,SLOT_POS.y);
-}
+    //リールエリア仮置き
+    ctx.fillStyle = "gray";
+    ctx.fillRect(15, 75, 270, 180);
 
-function onBackground(canvas,x,y) {
-    const bg = getBackgroundContext();
-    bg.drawImage(canvas,x,y);
+    ctx.fillStyle = "#f00000";
+    ctx.fillRect( 15, 120, 90, 90);
+    ctx.fillStyle = "#00f000";
+    ctx.fillRect(105, 120, 90, 90);
+    ctx.fillStyle = "#0000f0";
+    ctx.fillRect(195, 120, 90, 90);
+
+    // 各リールの絵柄を描画
+    const image = slotImages[1];
+    ctx.drawImage(image,  15,120);
+    ctx.drawImage(image, 105,120);
+    ctx.drawImage(image, 195,120);
+
+    
+
+    onBackground(canvas,SLOT_POS.x,SLOT_POS.y);
 }
