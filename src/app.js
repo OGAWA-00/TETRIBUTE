@@ -1,11 +1,11 @@
-import { drawBackground, drawField, drawMino, drawGhost,drawNextQueue, drawHold, drawScore, drawSlot } from '/src/ui/draw.js';
+import { drawBackground, drawField, drawMino, drawGhost,drawNextQueue, drawHold, drawScore, drawSlot } from './ui/draw.js';
 
-import { spawnMino } from '/src/mino/minoFactory.js';
-import { updateGhost } from '/src/mino/minoGhost.js';
+import { spawnMino } from './mino/minoFactory.js';
+import { updateGhost } from './mino/minoGhost.js';
 
-import { setupInput } from '/src/game/input.js';
-import { setupController } from '/src/game/controller.js';
-import { startGameLoop } from '/src/game/loop.js';
+import { setupInput } from './game/input.js';
+import { setupController } from './game/controller.js';
+import { startGameLoop } from './game/loop.js';
 
 window.addEventListener('DOMContentLoaded', () => {
     setupInput();

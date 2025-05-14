@@ -1,12 +1,12 @@
-import { spawnMino } from '/src/mino/minoFactory.js';
-import { updateGhost } from '/src/mino/minoGhost.js';
+import { spawnMino } from './minoFactory.js';
+import { updateGhost } from './minoGhost.js';
 
-import { gameState } from '/src/game/state.js';
+import { gameState } from '../game/state.js';
 
-import { isValidPosition } from '/src/field/collision.js';
-import { putMinoOnField, clearLines } from '/src/field/field.js';
+import { isValidPosition } from '../field/collision.js';
+import { putMinoOnField, clearLines } from '../field/field.js';
 
-import { addScore } from '/src/score/score.js';
+import { addScore } from '../score/score.js';
 
 
 export function moveLeft() {

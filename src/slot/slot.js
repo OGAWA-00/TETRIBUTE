@@ -1,4 +1,4 @@
-import { gameState } from "/src/game/state.js";
+import { gameState } from "../game/state";
 
 const SLOT_TABLE = {
     1: "X",

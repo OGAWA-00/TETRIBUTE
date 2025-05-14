@@ -1,6 +1,6 @@
-import { isValidPosition } from '/src/field/collision.js';
+import { isValidPosition } from '../field/collision.js';
 
-import { gameState } from '/src/game/state.js';
+import { gameState } from '../game/state.js';
 
 export const MINO_TYPES = [
     'I', 'O', 'T', 'S', 'Z', 'J', 'L',

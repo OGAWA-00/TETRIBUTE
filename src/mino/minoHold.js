@@ -1,9 +1,9 @@
-import { gameState } from '/src/game/state.js';
+import { gameState } from '../game/state.js';
 
-import { spawnMino, getMinoShape } from '/src/mino/minoFactory.js';
-import { updateGhost } from '/src/mino/minoGhost.js';
+import { spawnMino, getMinoShape } from './minoFactory.js';
+import { updateGhost } from './minoGhost.js';
 
-import { drawHold, drawNextQueue } from '/src/ui/draw.js';
+import { drawHold, drawNextQueue } from '../ui/draw.js';
 
 export function holdMino() {
     if (!gameState.canHold) return;

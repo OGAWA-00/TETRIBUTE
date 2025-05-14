@@ -1,5 +1,5 @@
-import { gameState } from '/src/game/state.js';
-import { isValidPosition } from '/src/field/collision.js';
+import { gameState } from '../game/state.js';
+import { isValidPosition } from '../field/collision.js';
 
 export function updateGhost() {
     const active = gameState.activeMino;

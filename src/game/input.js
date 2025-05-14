@@ -1,4 +1,4 @@
-import { emit } from '/src/eventBus.js';
+import { emit } from '../eventBus.js';
 
 export function setupInput() {
     window.addEventListener('keydown', (e) => {

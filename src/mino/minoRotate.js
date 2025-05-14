@@ -1,6 +1,5 @@
-import { gameState } from '/src/game/state.js';
-
-import { isValidPosition } from '/src/field/collision.js';
+import { gameState } from '../game/state.js';
+import { isValidPosition } from '../field/collision.js';
 
 const NORMAL_KICK_TABLE = {
     "0>1": [ [0,0], [-1,0], [-1,1], [0,-2], [-1,-2] ],
