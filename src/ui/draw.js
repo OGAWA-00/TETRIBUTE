@@ -1,8 +1,8 @@
 import { getBackgroundContext, getFieldContext, getNextContext, getHoldContext, getScoreContext, getSlotContext } from './dom.js';
 
-import { gameState } from '../game/state.js';
+import { gameState } from '/src/game/state.js';
 
-import { getMinoShape } from '../mino/minoFactory.js';
+import { getMinoShape } from '/src/mino/minoFactory.js';
 
 const BLOCK_SIZE = 32;
 const COLS = 10;
@@ -56,31 +56,31 @@ const COLOR_MAP = {
 };
 
 const MINO_FILES = {
-    1: "./../../public/assets/images/minos/Imino.jpg", // I
-    2: "./../../public/assets/images/minos/Jmino.jpg", // J
-    3: "./../../public/assets/images/minos/Lmino.jpg", // L
-    4: "./../../public/assets/images/minos/Omino.jpg", // O
-    5: "./../../public/assets/images/minos/Smino.jpg", // S
-    6: "./../../public/assets/images/minos/Tmino.jpg", // T
-    7: "./../../public/assets/images/minos/Zmino.jpg", // Z
-    8: "./../../public/assets/images/minos/Xmino.jpg", //EXTRA
+    1: "/public/assets/images/minos/Imino.jpg", // I
+    2: "/public/assets/images/minos/Jmino.jpg", // J
+    3: "/public/assets/images/minos/Lmino.jpg", // L
+    4: "/public/assets/images/minos/Omino.jpg", // O
+    5: "/public/assets/images/minos/Smino.jpg", // S
+    6: "/public/assets/images/minos/Tmino.jpg", // T
+    7: "/public/assets/images/minos/Zmino.jpg", // Z
+    8: "/public/assets/images/minos/Xmino.jpg", //EXTRA
 };
 
 const MINO_MINO_FILES = {
-    1: "./../../public/assets/images/MINIminos/IMINImino.jpg", // I
-    2: "./../../public/assets/images/MINIminos/JMINImino.jpg", // J
-    3: "./../../public/assets/images/MINIminos/LMINImino.jpg", // L
-    4: "./../../public/assets/images/MINIminos/OMINImino.jpg", // O
-    5: "./../../public/assets/images/MINIminos/SMINImino.jpg", // S
-    6: "./../../public/assets/images/MINIminos/TMINImino.jpg", // T
-    7: "./../../public/assets/images/MINIminos/ZMINImino.jpg", // Z
-    8: "./../../public/assets/images/MINIminos/XMINImino.jpg", //EXTRA
+    1: "/public/assets/images/MINIminos/IMINImino.jpg", // I
+    2: "/public/assets/images/MINIminos/JMINImino.jpg", // J
+    3: "/public/assets/images/MINIminos/LMINImino.jpg", // L
+    4: "/public/assets/images/MINIminos/OMINImino.jpg", // O
+    5: "/public/assets/images/MINIminos/SMINImino.jpg", // S
+    6: "/public/assets/images/MINIminos/TMINImino.jpg", // T
+    7: "/public/assets/images/MINIminos/ZMINImino.jpg", // Z
+    8: "/public/assets/images/MINIminos/XMINImino.jpg", //EXTRA
 };
 
 const SLOT_FILES = {
-    1: "./../../public/assets/images/slot/slot_F.jpg",
-    2: "./../../public/assets/images/slot/slot_LI.jpg",
-    3: "./../../public/assets/images/slot/slot_X.jpg",
+    1: "/public/assets/images/slot/slot_F.jpg",
+    2: "/public/assets/images/slot/slot_LI.jpg",
+    3: "/public/assets/images/slot/slot_X.jpg",
 }
 
 const minoImages = {};

@@ -1,8 +1,8 @@
-import { emit } from '../eventBus.js';
+import { emit } from '/src/eventBus.js';
 
-import { gameState } from './state.js';
+import { gameState } from '/src/game/state.js';
 
-import { getFallInterval } from './level.js';
+import { getFallInterval } from '/src/game/level.js';
 
 let lastTime = 0;
 let dropInterval = 1000; // ms(1秒間隔

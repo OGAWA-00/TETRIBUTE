@@ -1,14 +1,14 @@
-import { on } from '../eventBus.js';
+import { on } from '/src/eventBus.js';
 
-import { gameState, resetGameState } from './state.js';
+import { gameState, resetGameState } from '/src/game/state.js';
 
-import { spawnMino } from '../mino/minoFactory.js';
-import { rotateLeft, rotateRight } from '../mino/minoRotate.js';
-import { moveLeft, moveRight, moveDown, hardDrop } from '../mino/minoMove.js';
-import { updateGhost } from '../mino/minoGhost.js';
-import { holdMino } from '../mino/minoHold.js';
+import { spawnMino } from '/src/mino/minoFactory.js';
+import { rotateLeft, rotateRight } from '/src/mino/minoRotate.js';
+import { moveLeft, moveRight, moveDown, hardDrop } from '/src/mino/minoMove.js';
+import { updateGhost } from '/src/mino/minoGhost.js';
+import { holdMino } from '/src/mino/minoHold.js';
 
-import { slotStart, slotStop } from '../slot/slot.js';
+import { slotStart, slotStop } from '/src/slot/slot.js';
 
 import { drawField, drawMino, drawGhost, drawNextQueue, drawHold, drawScore, drawStartSlot, drawStopSlot } from '../ui/draw.js';
 

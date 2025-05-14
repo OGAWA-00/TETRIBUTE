@@ -1,9 +1,9 @@
-import { gameState } from '../game/state.js';
-import { getLevel } from '../game/level.js';
+import { gameState } from '/src/game/state.js';
+import { getLevel } from '/src/game/level.js';
 
-import { addScore } from '../score/score.js';
+import { addScore } from '/src/score/score.js';
 
-import { checkTSpin } from '../mino/minoRotate.js';
+import { checkTSpin } from '/src/mino/minoRotate.js';
 
 
 export function putMinoOnField() {

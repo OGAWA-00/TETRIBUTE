@@ -1,6 +1,6 @@
-import { gameState } from '../game/state.js';
+import { gameState } from '/src/game/state.js';
 
-import { drawScore } from '../ui/draw.js';
+import { drawScore } from '/src/ui/draw.js';
 
 export function addScore({
     linesCleared = 0,
