@@ -10,7 +10,7 @@ let dropAccumulator = 0;
 
 let slotAccumulator = 0;
 const slotInterval = 5000;
-const slotSpinTime = 3000;
+const slotSpinTime = 4000;
 
 export function startGameLoop() {
     requestAnimationFrame(update);
@@ -38,6 +38,10 @@ function update(timestamp) {
         emit('startSlot');
         gameState.slotSpin = true;
         slotAccumulator = 0;
+    }
+
+    if (gameState.slotSpin) {
+        emit('spinSlot');
     }
 
     if (slotAccumulator > slotSpinTime && gameState.slotSpin) {

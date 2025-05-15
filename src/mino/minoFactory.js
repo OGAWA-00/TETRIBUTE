@@ -90,6 +90,8 @@ export function spawnMino() {
         shape,
         x: spawnX,
         y: 0,
+        rotation: 0,
+        lastKickIndex: 0,
     };
   
     if (!isValidPosition(newMino, gameState.field)) {

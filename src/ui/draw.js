@@ -28,8 +28,11 @@ const SLOT_WINDOW_HEIGHT = 390;
 const HOLD_POS = {x:20, y:20};
 const FIELD_POS = {x:140, y:20};
 const NEXT_POS = {x:480, y:20};
-const SCORE_POS = {x:140, y:724};
+const SCORE_POS = {x:20, y:140};
 const SLOT_POS = {x:480, y:340};
+
+let test = 75;
+let slot_y = 1;
 
 export const MINO_ID_MAP = {
     I: 1,
@@ -254,13 +257,17 @@ export function drawHold() {
 export function drawScore() {
     const canvas = getScoreContext();
     const ctx = canvas.getContext('2d');
-    ctx.fillStyle = "#999";
+    ctx.fillStyle = BG_COLOR;
     ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 
-    ctx.fillStyle = '#000';
-    ctx.font = "48px serif";
+    ctx.fillStyle = 'white';
+    ctx.font = "20px serif";
     ctx.textAlign = "center";
-    ctx.fillText(gameState.score, canvas.width/2, canvas.height/2);
+    ctx.fillText('SCORE', canvas.width/2, 30);
+    ctx.fillText(gameState.score, canvas.width/2, 60);
+
+    ctx.fillText('LEVEL', canvas.width/2, 100);
+    ctx.fillText(gameState.level, canvas.width/2, 130)
 
     onBackground(canvas,SCORE_POS.x,SCORE_POS.y);
 }
@@ -272,9 +279,27 @@ export function drawSlot(){
     ctx.fillStyle = BG_COLOR;
     ctx.fillRect(0, 0, SLOT_WINDOW_WIDTH, SLOT_WINDOW_HEIGHT);
 
-    //リールエリア仮置き
+    ctx.fillStyle = 'red';
+    ctx.beginPath();
+    ctx.moveTo(15, 165);
+    ctx.lineTo(0, 170);
+    ctx.lineTo(0, 160);
+    ctx.fill();
+
+    ctx.beginPath();
+    ctx.moveTo(285, 165);
+    ctx.lineTo(300, 170);
+    ctx.lineTo(300, 160);
+    ctx.fill();
+
+    // //リールエリア初期化
     ctx.fillStyle = "gray";
     ctx.fillRect(15, 75, 270, 180);
+
+    // クリッピング領域を設定
+    ctx.beginPath();
+    ctx.rect(15, 75, 270, 180);
+    ctx.clip(); // この領域外には描画されなくなる
 
     onBackground(canvas,SLOT_POS.x,SLOT_POS.y);
 }
@@ -283,36 +308,35 @@ export function drawStartSlot() {
     const canvas = getSlotContext();
     const ctx = canvas.getContext('2d');
 
-    const id = [1,2,3,4,5,6,7];
-
-    for (let i = id.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [id[i], id[j]] = [id[j], id[i]];
-    }
-
-    ctx.fillStyle = COLOR_MAP[id[0]];
-    ctx.fillRect( 15, 120, 90, 90);
-    ctx.fillStyle = COLOR_MAP[id[1]];
-    ctx.fillRect(105, 120, 90, 90);
-    ctx.fillStyle = COLOR_MAP[id[2]];
-    ctx.fillRect(195, 120, 90, 90);
-
-    // 各リールの絵柄を描画
-    // const image = slotImages[1];
-    // ctx.drawImage(image,  15,120);
-    // ctx.drawImage(image, 105,120);
-    // ctx.drawImage(image, 195,120);
-
-    onBackground(canvas,SLOT_POS.x,SLOT_POS.y);
+    slot_y = 1;
 }
 
-export function drawStopSlot() {
+export function drawSpinSlot() {
     const canvas = getSlotContext();
     const ctx = canvas.getContext('2d');
 
     //リールエリア仮置き
     ctx.fillStyle = "gray";
     ctx.fillRect(15, 75, 270, 180);
+
+    ctx.fillStyle = "red";
+    ctx.fillRect( 15, test, 90, 30);
+
+    if (test > 225) {test = 75;}
+    test += slot_y;
+
+    onBackground(canvas,SLOT_POS.x,SLOT_POS.y);
+}
+
+export function drawStopSlot() {
+    //現在の絵柄のY座標と、目的の絵柄のY座標を計算
+    //出した座標の差の分動いてから停止
+    //各リール分どうやってだすの？
+
+    slot_y = 0 //停止
+
+    const canvas = getSlotContext();
+    const ctx = canvas.getContext('2d');
 
     onBackground(canvas,SLOT_POS.x,SLOT_POS.y);
 }

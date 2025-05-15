@@ -1,9 +1,9 @@
 import { gameState } from "../game/state.js";
 
 const SLOT_TABLE = {
-    1: "X",
-    2: "LI",
-    3: "F",
+    //1: "X",
+    1: "LI",
+    2: "F",
 }
 
 let result;
@@ -11,8 +11,8 @@ let result;
 export function slotStart() {
     gameState.slotCount -= 1;
 
-    const lottery = Math.floor(Math.random()+0.80);
-    if (!lottery){
+    const lottery = Math.floor(Math.random()+0.80); //80%
+    if (!lottery){ //20%ではずれ
         return
     }
     result = SLOT_TABLE[1+Math.floor(Math.random()* Object.keys(SLOT_TABLE).length)];   

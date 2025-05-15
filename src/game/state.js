@@ -12,7 +12,8 @@ export const gameState = {
     holdMino: null,
     canHold: true,
     slotCount: 0,
-    slotSpin: false
+    slotSpin: false,
+    lastMove: true,
 };
   
 export function createEmptyField(rows = 22, cols = 10) {
@@ -34,6 +35,7 @@ export function resetGameState() {
     gameState.canHold = true;
     gameState.slotCount = 0;
     slotSpin: false;
+    lastMove: true;
 }
   
   
